@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <%- include('../partials/header.ejs') %>  
+</head>
+<body>
+  <%- include('../partials/navbar.ejs')%>
+<%- include('../partials/alerts.ejs') %>  
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+      <div class="col-md-6 offset-md-6 col-xl-6 offset-xl-3">
+          <div class="card shadow">
+              <img src="/img/coverimg.jpg" alt="" class="card-img-top" />
+              <div class="card-body">
+                  <h5 class="card-title">Register
+                  </h5>
+                  <p class="text-primary">This website does not use cookies for tracking. 
+                    They are only used for a better experience on its services.
+                     For more information on what types of cookies are stored, please contact the support.
+                    By registering, you agree to our privacy policies.
+                    </p>
+                  <form action="/users/register" method="POST" class="validated-form" novalidate>
+                      <div class="mb-3">
+                          <label class="form-label" for="name">Name</label>
+                          <input class="form-control" type="text" id="name" name="name" required autofocus>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label" for="username">Username</label>
+                          <input class="form-control" type="text" id="username" name="username" required autofocus>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label" for="email">Email</label>
+                          <input class="form-control" type="email" id="email" name="email" required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input class="form-control" type="text" id="phone" name="phone" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label" for="password">Password</label>
+                          <input class="form-control" type="password" id="password" name="password" required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <button class="btn btn-success btn-block">Register</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<% include('../partials/footer') %>
+</body>
+</html>

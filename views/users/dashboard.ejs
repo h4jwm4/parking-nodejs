@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="/css/cards.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <%- include('../partials/header.ejs') %>  
+</head>
+<body>
+<%- include('../partials/navbar.ejs')%>
+<%- include('../partials/alerts.ejs') %>  
+<div class="container">
+<center><h1>Dashboard</h1>
+<h3>Welcome <%=body.name%></h3></center>
+
+<h3>Your Current Bookings:</h3>
+  <hr>
+  <ul class="cards">
+    <% for(let booking of bookings){ if(booking.status==="Completed" || booking.status==="Cancelled"){continue;}%>
+      <% var startTime = new Date(booking.start_time*1000) %>
+      <% var endTime = new Date(booking.end_time*1000) %>
+      <li class="cardItem">
+        <div class="eachCard">
+          <div class="cardContent">
+            <div class="cardTitle">
+              <b>Status-</b>
+              <span style="color: rgb(250, 234, 17);"><%=booking.status %></span>
+            </div>
+            <p class="cardText">
+              <div class="startTime">
+                <b style="font-weight:bolder;">Starts From- </b><b>Date</b>: <%=startTime.toDateString()%><span><b> Time: </b> <%=startTime.getHours() + ":" + startTime.getMinutes()%></span> <br>
+              </div>
+              <div class="endTime">
+                <b style="font-weight:bolder;">Ends On- </b><b>Date</b>: <%=endTime.toDateString()%><span><b> Time: </b> <%=endTime.getHours() + ":" + endTime.getMinutes()%></span> <br>
+              </div>
+            </p>
+          </div>
+          <div>
+            <% if(booking.status!=="Cancelled"){ %> 
+            <form action="/booking/cancel/<%=booking._id%>" method="POST" id="cancel-<%=booking._id%>"></form>
+            <br>
+            <a href="javascript:document.getElementById('cancel-<%=booking._id%>').submit();" 
+              class="btn btn-danger" style="margin-left: 0;">Cancel Booking</a>
+            <a href="/users/booking/<%=booking._id%>" class="btn btn-info" style="color:white">View Booking</a>
+            <% } %>
+          </div> 
+        </div>
+      </li>
+        <% } %>
+  </ul>
+  <% if(!bookings){ %>
+    No Bookings Found!
+  <% } %>
+  %>
+</div>
+</body>
+<%- include('../partials/footer.ejs') %>

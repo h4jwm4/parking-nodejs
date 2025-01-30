@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Money</title>
+    <%- include('../partials/header')%>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs')%>
+    <%- include('../partials/alerts')%>
+    <div class="container">
+        <h1>Add Money</h1>
+        <h3>Current Balance - <i class="fas fa-rupee-sign"></i> <%=Math.round(money*100)/100%></h3>
+    <form action="/users/addmoney" method="POST">
+        <input type="number" name="added_money" class="form-control" required placeholder="Enter Amount" min=0 max=10000000 step=0.01>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
